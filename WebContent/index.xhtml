@@ -1,0 +1,117 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:head>
+	
+	</h:head>
+
+	<h:body>
+	
+		<h:form>
+		
+			<p:toolbar id="tb">
+				<p:toolbarGroup align="left">
+					<p:commandButton id="btName" value="Insere Cliente" update="grid"
+						actionListener="#{indexView.inserir()}" />
+					<p:separator />
+					<p:commandButton type="button" value="Atualiza" icon="ui-icon-disk" />
+					<p:commandButton type="button" value="Deleta" icon="ui-icon-trash" />
+					<p:separator />
+					<h:commandLink action="/qryBuilder.xhtml" target="">New Query</h:commandLink>
+				</p:toolbarGroup>
+			</p:toolbar>
+		
+			<p:sticky target="tb" />
+
+			<p:separator />
+			<p:separator />
+		
+			<p:panelGrid id="grid0">
+			
+				<p:row>
+					<p:column style="width:20%">
+						<p:outputLabel id="lbCodigo" value="Codigo" />
+					</p:column>
+					<p:column style="width:20%">
+						<p:outputLabel id="lbCpf" value="Cpf" />
+					</p:column>
+					<p:column style="width:20%">
+						<p:outputLabel id="lbRg" value="Rg" />
+					</p:column>
+					<p:column style="width:20%">
+						<p:outputLabel id="lbNome" value="Nome" />
+					</p:column>
+					<p:column style="width:20%">
+						<p:outputLabel id="lbDataNascimento" value="Data Nascimento" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column style="width:20%">
+						<p:inputText style="width:75%" maxlength="11" id="inputCodigo" value="#{indexView.cliente.codigo}" />
+					</p:column>
+					<p:column style="width:20%">
+						<p:inputText style="width:75%" maxlength="11" id="inputCpf" value="#{indexView.cliente.cpf}" />
+					</p:column>
+					<p:column style="width:20%">
+						<p:inputText style="width:75%" maxlength="11" id="inputRg" value="#{indexView.cliente.rg}" />
+					</p:column>
+					<p:column style="width:20%">
+						<p:inputText id="inputNome" value="#{indexView.cliente.nome}" />
+					</p:column>
+					<p:column style="width:20%">
+						<p:calendar id="inputDataNascimento"
+							value="#{indexView.cliente.dataNascimento}" />
+					</p:column>
+				</p:row>
+
+			</p:panelGrid>
+
+			<p:separator />
+			<p:separator />
+
+			<p:panelGrid id="grid">
+
+				<p:row>
+					<p:column>
+						<p:dataTable
+						id="dtItens"
+						selectionMode="single"
+						selection="#{indexView.selected}"
+						rowKey="#{c.codigo}"
+						value="#{indexView.lstClientes}"
+						var="c">
+							<p:column headerText="codigo">
+								<p:outputLabel value="#{c.codigo}" />						
+							</p:column>
+							<p:column headerText="nome">
+								<p:outputLabel value="#{c.nome}" />						
+							</p:column>
+							<p:column headerText="cpf">
+								<p:outputLabel value="#{c.cpf}" />						
+							</p:column>
+							<p:column headerText="rg">
+								<p:outputLabel value="#{c.rg}" />						
+							</p:column>
+							<p:column headerText="dataNascimento">
+								<p:outputLabel value="#{c.dataNascimento}" />						
+							</p:column>
+						</p:dataTable>
+					</p:column>
+				</p:row>
+	
+				<p:row>
+					<p:column>
+						<p:outputLabel id="lbMsg" value="#{indexView.msg}" />
+					</p:column>
+				</p:row>
+	
+			</p:panelGrid>
+			
+		</h:form>
+		
+	</h:body>
+	
+</html>

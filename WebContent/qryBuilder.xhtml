@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:head>
+	
+	</h:head>
+	
+	<h:body>
+	
+		<h:form>
+		
+			<p:toolbar id="tb">
+				<p:toolbarGroup align="left">
+					<p:commandButton id="btExec" value="Executa MySQL" update="grid"
+						actionListener="#{qryBuilderView.execQry()}" />
+					<p:separator />
+					<p:commandButton type="button" value="Atualiza" icon="ui-icon-disk" />
+					<p:commandButton type="button" value="Deleta" icon="ui-icon-trash" />
+					<p:separator />
+					<h:commandLink action="/index.xhtml" target="">Home</h:commandLink>
+				</p:toolbarGroup>
+			</p:toolbar>
+		
+			<p:sticky target="tb" />
+		
+			<p:separator />
+			<p:separator />
+		
+			<p:panelGrid id="grid0">
+			
+				<p:row>
+					<p:column>
+						<p:outputLabel id="lbQry" value="Digite a Querie a ser Executada: " />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+				        <p:inputTextarea value="#{qryBuilderView.msg}" required="true"
+				            title="Digite a Query" maxlength="250" rows="6" cols="80" ></p:inputTextarea>
+					</p:column>
+				</p:row>
+	
+			</p:panelGrid>
+
+			<p:separator />
+			<p:separator />
+
+			<p:panelGrid id="grid">
+	
+				<p:row>
+					<p:column>
+						<p:dataTable
+						id="dtItens"
+						selectionMode="single"
+						selection="#{qryBuilderView.selected}"
+						rowKey="#{c.codigo}"
+						value="#{qryBuilderView.lstClientes}"
+						var="c">
+							<p:column headerText="codigo">
+								<p:outputLabel value="#{c.codigo}" />						
+							</p:column>
+							<p:column headerText="nome">
+								<p:outputLabel value="#{c.nome}" />						
+							</p:column>
+							<p:column headerText="cpf">
+								<p:outputLabel value="#{c.cpf}" />						
+							</p:column>
+							<p:column headerText="rg">
+								<p:outputLabel value="#{c.rg}" />						
+							</p:column>
+							<p:column headerText="dataNascimento">
+								<p:outputLabel value="#{c.dataNascimento}" />						
+							</p:column>
+						</p:dataTable>
+					</p:column>
+				</p:row>
+				
+			</p:panelGrid>
+			
+		</h:form>
+		
+	</h:body>
+	
+</html>
