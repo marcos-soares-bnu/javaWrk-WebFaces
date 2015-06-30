@@ -15,6 +15,7 @@ import com.mysql.jdbc.ResultSetMetaData;
 
 public class ClienteDAO {
 
+	public String test;
 	public Connection con = null;
 
 	public ClienteDAO(Connection con) {
@@ -91,21 +92,6 @@ public class ClienteDAO {
 		}
 		
 		//*******************************************************************
-		
-		//List<Cliente> resultado = new ArrayList<Cliente>();
-		//ResultSet resultSet = pstm.executeQuery();
-		//while (resultSet.next()) {
-
-		//	int codigo = resultSet.getInt(1);
-		//	String nome = resultSet.getString(2);
-		//	int cpf = resultSet.getInt(3);
-		//	int rg = resultSet.getInt(4);
-		//	java.util.Date dataNascimento = new java.util.Date(resultSet
-		//			.getDate(5).getTime());
-
-		//	resultado.add(new Cliente(codigo, nome, cpf, rg, dataNascimento));
-
-		//}
 
 		pstm.close();
 
