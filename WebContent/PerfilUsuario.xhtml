@@ -10,17 +10,17 @@
 
 	<h:body>
 	
-		<h:form>
+		<h:form id="frm">
 	
 			<p:toolbar id="tb">
 				<p:toolbarGroup align="left">
-					<p:commandButton value="Atualizar" action="#{perfilUsuarioBean.atualizar}" update="@form"/>
+					<p:commandButton value="Atualizar" action="#{perfilUsuarioBean.atualizar}" update="frm"/>
 					<p:separator />
 					<p:commandButton type="button" value="Atualiza" icon="ui-icon-disk" />
 					<p:commandButton type="button" value="Deleta" icon="ui-icon-trash" />
 					<p:commandButton type="button" value="Limpa" icon="ui-icon-trash" />
 					<p:separator />
-					<h:commandLink action="/index.xhtml">Home</h:commandLink>
+					<h:commandLink action="/Index.xhtml">Home</h:commandLink>
 				</p:toolbarGroup>
 			</p:toolbar>
 		
@@ -34,7 +34,7 @@
 	
 				<p:outputLabel value="País" for="pais" />
 				<p:autoComplete id="pais" value="#{perfilUsuarioBean.pais}"
-					completeMethod="#{perfilUsuarioBean.sugerirPaises}"
+					dropdown="true" completeMethod="#{perfilUsuarioBean.sugerirPaises}"
 					forceSelection="true" converter="pais"
 					var="p" itemLabel="#{p.nome}" itemValue="#{p}" />
 			</p:panelGrid>
@@ -43,7 +43,7 @@
 			<p:toolbar id="tbr">
 				<p:toolbarGroup align="left">
 					<p:separator />
-					<p:outputLabel id="lbMsg" value="#{indexView.msg}" />
+					<p:outputLabel id="lbMsg" value="#{perfilUsuarioBean.msg}" />
 					<p:separator />
 				</p:toolbarGroup>
 			</p:toolbar>

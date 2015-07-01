@@ -1,18 +1,24 @@
-package br.com.proway.view;
+package br.com.proway.controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-@ManagedBean(name = "indexView")
+import br.com.proway.model.Cliente;
+import br.com.proway.model.ClienteDAO;
+import br.com.proway.model.Conexao;
+
+@ManagedBean(name = "qryBuilderView")
 @SessionScoped
-public class IndexView {
+public class QryBuilderBean {
 
 	private Cliente cliente;
 	private Cliente selected;
-	
-	private String msg;
+	private String msg = "SELECT * FROM cliente";
 	private List<Cliente> lstClientes = new ArrayList<Cliente>();
 
 	public String getMsg() {
@@ -41,22 +47,28 @@ public class IndexView {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
-	public IndexView() throws Exception {
+	
+	@SuppressWarnings("unchecked")
+	public void execQry() throws Exception {
+		//
+		lstClientes.clear();
+		//
 		Conexao conexao = new Conexao();
 		ClienteDAO dao = new ClienteDAO(conexao.con);
 		
-		List<Cliente> busca = dao.busca();
-		lstClientes.addAll(busca);
+		List<Map<String, Object>> buscaDinamica = dao.buscaDinamica(this.msg);
+		lstClientes.addAll((Collection<? extends Cliente>) buscaDinamica);
+		//
+		this.setMsg("Query executada com sucesso!");
 	}
-
-	public String inserir() throws Exception {
-
+	
+	@SuppressWarnings("unchecked")
+	public QryBuilderBean() throws Exception {
 		Conexao conexao = new Conexao();
 		ClienteDAO dao = new ClienteDAO(conexao.con);
 		
-		setMsg(dao.insere(cliente));
-		return getMsg();
+		List<Map<String, Object>> buscaDinamica = dao.buscaDinamica(this.msg);
+		lstClientes.addAll((Collection<? extends Cliente>) buscaDinamica);
 	}
 
 	public List<Cliente> getLstClientes() {

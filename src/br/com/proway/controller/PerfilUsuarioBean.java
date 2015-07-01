@@ -1,10 +1,12 @@
-package br.com.proway.view;
+package br.com.proway.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import br.com.proway.model.Pais;
 
 @ManagedBean(name = "perfilUsuarioBean")
 @SessionScoped
@@ -13,7 +15,16 @@ public class PerfilUsuarioBean {
 	//private static final long serialVersionUID = 1L;
 
 	public static final List<Pais> PAISES = new ArrayList<>();
+	private String msg = "";
 
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	
 	static {
         PAISES.add(new Pais(1, "Alemanha"));
         PAISES.add(new Pais(2, "Argélia"));
@@ -53,7 +64,8 @@ public class PerfilUsuarioBean {
     
     private void adicionarMensagem(String msg) {
     	//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(msg));
-    	System.out.println(msg);
+    	//System.out.println(msg);
+    	this.setMsg(msg);
     }
 	
 	public String getNome() {

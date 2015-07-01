@@ -1,4 +1,4 @@
-package br.com.proway.view;
+package br.com.proway.model;
 
 import java.util.Date;
 

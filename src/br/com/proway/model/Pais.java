@@ -1,4 +1,4 @@
-package br.com.proway.view;
+package br.com.proway.model;
 
 public class Pais {
 

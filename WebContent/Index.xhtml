@@ -10,20 +10,25 @@
 
 	<h:body>
 	
-		<h:form>
+		<h:form id="frm">
 		
 			<p:toolbar id="tb">
 				<p:toolbarGroup align="left">
-					<p:commandButton id="btName" value="Insere Cliente" update="grid"
+					<p:commandButton id="btName" value="Insere Cliente" update="frm"
 						actionListener="#{indexView.inserir()}" />
 					<p:separator />
 					<p:commandButton type="button" value="Atualiza" icon="ui-icon-disk" />
 					<p:commandButton type="button" value="Deleta" icon="ui-icon-trash" />
 					<p:commandButton type="button" value="Limpa" icon="ui-icon-trash" />
 					<p:separator />
-					<h:commandLink action="/qryBuilder.xhtml">New Query</h:commandLink>
+					<h:commandLink action="/QryBuilder.xhtml">New Query</h:commandLink>
 					<p:separator />
 					<h:commandLink action="/PerfilUsuario.xhtml">PerfilUsuario</h:commandLink>
+					<p:separator />
+					<p:autoComplete id="clientes" value="#{indexView.cliente}"
+						dropdown="true" completeMethod="#{indexView.sugerirClientes}"
+						forceSelection="true" converter="clienteconv"
+						var="p" itemLabel="#{p.nome}" itemValue="#{p}" />
 				</p:toolbarGroup>
 			</p:toolbar>
 		

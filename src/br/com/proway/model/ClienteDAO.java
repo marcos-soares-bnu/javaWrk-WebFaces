@@ -1,4 +1,4 @@
-package br.com.proway.view;
+package br.com.proway.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.mysql.jdbc.ResultSetMetaData;
 
 public class ClienteDAO {
@@ -61,6 +62,20 @@ public class ClienteDAO {
 		return resultado;
 	}
 
+	
+	public Cliente buscaPorNome(String nome) throws SQLException {
+
+		List<Cliente> lstClientes = new ArrayList<Cliente>();
+		lstClientes = busca();
+		for (Cliente cliente : lstClientes) {
+			if (cliente.getNome().equals(nome)){
+				return cliente;
+			}
+		}
+		return null;
+	}
+	
+	
 	public List<Map<String, Object>> buscaDinamica(String qry) throws SQLException {
 		PreparedStatement pstm;
 		pstm = (PreparedStatement) con

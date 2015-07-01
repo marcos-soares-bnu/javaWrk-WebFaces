@@ -1,12 +1,14 @@
-package br.com.proway.view;
+package br.com.proway.controller;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@FacesConverter("pais")
-public class PaisConverter implements Converter {
+import br.com.proway.model.Cliente;
+
+@FacesConverter("clienteconv")
+public class ClienteConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
@@ -18,9 +20,9 @@ public class PaisConverter implements Converter {
     	} catch (NumberFormatException e) { }
         
     	if (value != null) {
-            for (Pais pais : PerfilUsuarioBean.PAISES) {
-                if (codigo.equals(pais.getCodigo())) {
-                    return pais;
+            for (Cliente cliente : ClienteBean.lstClientes) {
+                if (codigo.equals(cliente.getCodigo())) {
+                    return cliente;
                 }
             }
         }
@@ -30,10 +32,10 @@ public class PaisConverter implements Converter {
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value != null && !value.equals("")) {
-			Pais pais = (Pais) value;
-			return String.valueOf(pais.getCodigo());
+			Cliente cliente = (Cliente) value;
+			return String.valueOf(cliente.getCodigo());
 		}
 		return null;
 	}
-
+	
 }
