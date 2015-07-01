@@ -1,22 +1,18 @@
 package br.com.proway.view;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name = "qryBuilderView")
 @SessionScoped
-
 public class qryBuilderView {
 
 	private Cliente cliente;
 	private Cliente selected;
-	
 	private String msg = "SELECT * FROM cliente";
 	private List<Cliente> lstClientes = new ArrayList<Cliente>();
 
@@ -27,7 +23,6 @@ public class qryBuilderView {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
-
 	
 	public Cliente getSelected() {
 		return selected;
@@ -47,10 +42,9 @@ public class qryBuilderView {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
 	
+	@SuppressWarnings("unchecked")
 	public void execQry() throws Exception {
-
 		//
 		lstClientes.clear();
 		//

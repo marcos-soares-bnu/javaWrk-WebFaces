@@ -6,18 +6,13 @@ public class Cliente {
 
 	private int codigo;
 	private String nome;
-	private int cpf;
-	private int rg;
+	private String cpf;
+	private String rg;
 	private Date dataNascimento;
 
 	public Cliente() {
 
 	}
-
-	
-	
-	
-
 
 	public int getCodigo() {
 		return codigo;
@@ -35,19 +30,19 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
-	public int getRg() {
+	public String getRg() {
 		return rg;
 	}
 
-	public void setRg(int rg) {
+	public void setRg(String rg) {
 		this.rg = rg;
 	}
 
@@ -59,7 +54,7 @@ public class Cliente {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Cliente(int codigo, String nome, int cpf, int rg, Date dataNascimento) {
+	public Cliente(int codigo, String nome, String cpf, String rg, Date dataNascimento) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.cpf = cpf;

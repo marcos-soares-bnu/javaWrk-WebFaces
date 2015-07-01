@@ -19,8 +19,11 @@
 					<p:separator />
 					<p:commandButton type="button" value="Atualiza" icon="ui-icon-disk" />
 					<p:commandButton type="button" value="Deleta" icon="ui-icon-trash" />
+					<p:commandButton type="button" value="Limpa" icon="ui-icon-trash" />
 					<p:separator />
-					<h:commandLink action="/qryBuilder.xhtml" target="">New Query</h:commandLink>
+					<h:commandLink action="/qryBuilder.xhtml">New Query</h:commandLink>
+					<p:separator />
+					<h:commandLink action="/PerfilUsuario.xhtml">PerfilUsuario</h:commandLink>
 				</p:toolbarGroup>
 			</p:toolbar>
 		
@@ -53,10 +56,10 @@
 						<p:inputText style="width:75%" maxlength="11" id="inputCodigo" value="#{indexView.cliente.codigo}" />
 					</p:column>
 					<p:column style="width:20%">
-						<p:inputText style="width:75%" maxlength="11" id="inputCpf" value="#{indexView.cliente.cpf}" />
+						<p:inputText style="width:75%" maxlength="14" id="inputCpf" value="#{indexView.cliente.cpf}" />
 					</p:column>
 					<p:column style="width:20%">
-						<p:inputText style="width:75%" maxlength="11" id="inputRg" value="#{indexView.cliente.rg}" />
+						<p:inputText style="width:75%" maxlength="12" id="inputRg" value="#{indexView.cliente.rg}" />
 					</p:column>
 					<p:column style="width:20%">
 						<p:inputText id="inputNome" value="#{indexView.cliente.nome}" />
@@ -102,13 +105,17 @@
 					</p:column>
 				</p:row>
 	
-				<p:row>
-					<p:column>
-						<p:outputLabel id="lbMsg" value="#{indexView.msg}" />
-					</p:column>
-				</p:row>
-	
 			</p:panelGrid>
+
+			<p:toolbar id="tbr">
+				<p:toolbarGroup align="left">
+					<p:separator />
+					<p:outputLabel id="lbMsg" value="#{indexView.msg}" />
+					<p:separator />
+				</p:toolbarGroup>
+			</p:toolbar>
+	
+			<p:sticky target="tbr" />
 			
 		</h:form>
 		

@@ -6,5 +6,4 @@ public interface Interface {
 	public void busca(Cliente cli);  
 	public void altera(Cliente cli);  
 	public void exclui(Cliente cli);  	
-	
 }

@@ -1,16 +1,13 @@
 package br.com.proway.view;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.ListResourceBundle;
 import java.util.Map;
-
 import com.mysql.jdbc.ResultSetMetaData;
 
 public class ClienteDAO {
@@ -29,8 +26,8 @@ public class ClienteDAO {
 
 		pstm.setInt(1, cliente.getCodigo());
 		pstm.setString(2, cliente.getNome());
-		pstm.setInt(3, cliente.getCpf());
-		pstm.setInt(4, cliente.getRg());
+		pstm.setString(3, cliente.getCpf());
+		pstm.setString(4, cliente.getRg());
 		pstm.setDate(5,
 				new java.sql.Date(cliente.getDataNascimento().getTime()));
 
@@ -51,13 +48,12 @@ public class ClienteDAO {
 
 			int codigo = resultSet.getInt(1);
 			String nome = resultSet.getString(2);
-			int cpf = resultSet.getInt(3);
-			int rg = resultSet.getInt(4);
+			String cpf = resultSet.getString(3);
+			String rg = resultSet.getString(4);
 			java.util.Date dataNascimento = new java.util.Date(resultSet
 					.getDate(5).getTime());
 
 			resultado.add(new Cliente(codigo, nome, cpf, rg, dataNascimento));
-
 		}
 
 		pstm.close();
@@ -70,12 +66,7 @@ public class ClienteDAO {
 		pstm = (PreparedStatement) con
 				.prepareStatement(qry + ";");
 
-		//******************************************************************
-		
 		ResultSet rs = pstm.executeQuery();
-		ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-		int numberOfColumns = rsmd.getColumnCount();
-		boolean b = rsmd.isSearchable(1);		
 
 		List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
 		ResultSetMetaData metaData = (ResultSetMetaData) rs.getMetaData();
@@ -90,11 +81,8 @@ public class ClienteDAO {
 
 		    rows.add(columns);
 		}
-		
-		//*******************************************************************
 
 		pstm.close();
-
 		return rows;
 	}
 	

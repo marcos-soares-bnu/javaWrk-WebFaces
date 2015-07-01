@@ -19,8 +19,9 @@
 					<p:separator />
 					<p:commandButton type="button" value="Atualiza" icon="ui-icon-disk" />
 					<p:commandButton type="button" value="Deleta" icon="ui-icon-trash" />
+					<p:commandButton type="button" value="Limpa" icon="ui-icon-trash" />
 					<p:separator />
-					<h:commandLink action="/index.xhtml" target="">Home</h:commandLink>
+					<h:commandLink action="/index.xhtml">Home</h:commandLink>
 				</p:toolbarGroup>
 			</p:toolbar>
 		
@@ -79,6 +80,16 @@
 				</p:row>
 				
 			</p:panelGrid>
+		
+			<p:toolbar id="tbr">
+				<p:toolbarGroup align="left">
+					<p:separator />
+					<p:outputLabel id="lbMsg" value="#{indexView.msg}" />
+					<p:separator />
+				</p:toolbarGroup>
+			</p:toolbar>
+	
+			<p:sticky target="tbr" />
 			
 		</h:form>
 		
